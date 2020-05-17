@@ -16,7 +16,7 @@ class Menu:
             os.system('cls' if os.name == 'nt' else 'clear')
             print("--------- Main Menu ---------\n")
             print("Choose Action (Type the numeric of your choice/ 'quit' to exit) :\n\n"
-                  "1 - Add Run\n2 - Display last runs\n3 - Display Ratio\n4 - Reset Table\n")
+                  "1 - Add Run\n2 - Display runs\n3 - Display Ratio\n4 - Reset Table\n")
             choice = str(input("> "))
             if choice == '1':
                 Menu.add_run_menu()
@@ -40,9 +40,9 @@ class Menu:
                 death = int(input("How many deaths : "))
                 assists = int(input("How many assists : "))
                 result = str(input("Did you win (yes/no and default is 'no') ? "))
-                if result.lower() not in ['yes', 'no']:
+                if not result.lower() in ['yes', 'no']:
                     result = False
-                elif result.lower() is 'yes':
+                elif result.lower() == 'yes':
                     result = True
                 else:
                     result = False
@@ -59,10 +59,11 @@ class Menu:
             print("--------- Display my runs ---------\n")
             print("Choose Action (Type the numeric of your choice/ 'quit' to return) :\n\n"
                   "1 - Display last ten runs\n2 - Display custom numbers of runs\n"
-                  "3 - Display all runs (Be careful if there is tons of runs)\n")
+                  "3 - Display all runs (Be careful if there is tons of runs)\n"
+                  "4 - Display best run\n")
             choice = str(input("> "))
             if choice == '1':
-                database.last_ten()
+                database.display_runs(1)
             elif choice == '2':
                 while True:
                     try:
@@ -71,8 +72,10 @@ class Menu:
                     except Exception as e:
                         print("This is not an appropriate number")
                         continue
-                database.custom_runs(limit)
+                database.display_runs(2, limit)
             elif choice == '3':
-                database.whole_runs()
+                database.display_runs(3)
+            elif choice == '4':
+                database.best_run()
             elif choice == 'quit':
                 Menu.main_menu()
