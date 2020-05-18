@@ -6,6 +6,7 @@ from .modelController import database
 class Menu:
     @staticmethod
     def display_credits():
+        os.system('cls' if os.name == 'nt' else 'clear')
         print("############################\nPerfAbilitor v0.1          #\n"
               "Created By Maxime CHAMPAIN #\n############################\n")
         input("Press Enter to continue ...")
@@ -16,15 +17,13 @@ class Menu:
             os.system('cls' if os.name == 'nt' else 'clear')
             print("--------- Main Menu ---------\n")
             print("Choose Action (Type the numeric of your choice/ 'quit' to exit) :\n\n"
-                  "1 - Add Run\n2 - Display runs\n3 - Display Ratio\n4 - Reset Table\n")
+                  "1 - Add Run\n2 - Display runs\n3 - Reset Table\n")
             choice = str(input("> "))
             if choice == '1':
                 Menu.add_run_menu()
             elif choice == '2':
                 Menu.display_runs_menu()
             elif choice == '3':
-                return
-            elif choice == '4':
                 database.reset_table()
                 print("Database Flushed. Everything is reset to 0")
             elif choice == 'quit':

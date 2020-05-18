@@ -75,6 +75,13 @@ class Database:
                 print("Your best run was the following :\n")
                 print(f"You made {bestkill} kills, {bestdeath} deaths, {bestassists} assists, "
                       f"and it was a {bestresult}. The ratio was {bestratio}.")
+        input("press Enter to continue ....")
+
+    def run_add_recap(self, data):
+        return
+
+    def recap_for_previous(self):
+        return
 
     def run_recap(self, data):
         ratio = 0
@@ -103,6 +110,7 @@ class Database:
         print(f'\nListed runs ratio (KDA) : {round(ratio, 2)} / '
               f'This is {round(performance, 2)}% of your max performance.'
               f' / Your actual winrate is {round(winrate, 2)}%')
+        input("press Enter to continue ....")
 
 
 database = Database()
